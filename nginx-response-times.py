@@ -119,11 +119,13 @@ def print_nagios_report(range_list, result):
 def parse_args():
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument(
-        '--uri', 
+        '--uri',
+        required=True,
         help='Host to connect to.'
     )
     parser.add_argument(
         '--index', 
+        required=True,
         help='Index to be used'
     )
     parser.add_argument(
@@ -142,13 +144,13 @@ def parse_args():
     )
     parser.add_argument(
         '--range',
-        nargs='*',
+        nargs='+',
         type=str,
         help='Tuples (value, min, max) to generate ranges. The first one must be 0.'
-    ) "request_time"
+    )
     parser.add_argument(
         '--request-time-field',
-        default="request_time"
+        default="request_time",
         help='Field name where the request time is stored'
     )
     return parser.parse_args()
