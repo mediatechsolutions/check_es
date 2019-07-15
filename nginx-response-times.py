@@ -25,7 +25,10 @@ class Range:
 
 
 def split_ranges(range_list):
-    for data in range_list:
+    # icinga do not allow to repeat same argument, so join them all and split them again
+    for data in " ".join(range_list).split(" "):
+        if not data:
+            continue
         array = data.split(':')
 
         low = float(array[0])
